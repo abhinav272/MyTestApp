@@ -5,13 +5,17 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.abhinav.mytestapp.Model.JsonReponse;
+import com.abhinav.mytestapp.Utils.PreferenceUtils;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 
 /**
  * Created by abhinavsharma on 12-02-2016.
@@ -21,7 +25,7 @@ public class StoryDetailActivity extends AppCompatActivity implements View.OnCli
     private JsonReponse item = null;
     private ImageView image,like;
     private TextView storytitle,storydescription,createdon,likescount;
-    private Button viewstory;
+    private Button viewstory,followbutton;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,6 +43,8 @@ public class StoryDetailActivity extends AppCompatActivity implements View.OnCli
         createdon = (TextView) findViewById(R.id.createdon);
         likescount = (TextView) findViewById(R.id.likescount);
         viewstory = (Button) findViewById(R.id.viewstory);
+        followbutton = (Button) findViewById(R.id.followbutton);
+        followbutton.setOnClickListener(this);
         setUpUI(item);
         like.setOnClickListener(this);
         viewstory.setOnClickListener(this);
@@ -52,6 +58,9 @@ public class StoryDetailActivity extends AppCompatActivity implements View.OnCli
         storydescription.setText(item.getDescription());
         createdon.setText(item.getVerb());
         likescount.setText(item.getLikesCount()+" Likes");
+        if(PreferenceUtils.getFollowStatus(this,item.getDb()).equalsIgnoreCase("Followed"))
+            followbutton.setText("Unfollow the User");
+
 
 
     }
@@ -68,6 +77,17 @@ public class StoryDetailActivity extends AppCompatActivity implements View.OnCli
                 Intent viewStoryInBrowser = new Intent(Intent.ACTION_VIEW).setData(Uri.parse(item.getUrl()));
                 if(viewStoryInBrowser.resolveActivity(getPackageManager())!=null){
                     startActivity(Intent.createChooser(viewStoryInBrowser,"Choose the browser"));
+                }
+                break;
+            case R.id.followbutton:
+                if(PreferenceUtils.getFollowStatus(this,item.getDb()).equalsIgnoreCase("UnFollowed")||PreferenceUtils.getFollowStatus(this,item.getDb()).equalsIgnoreCase("NoStatus")){
+                    Log.d("status","followed");
+                    PreferenceUtils.saveFollowStatus(this,item.getDb(),"Followed");
+                    followbutton.setText("Unfollow this user");
+                }else {
+                    Log.d("status","unfollowed");
+                    PreferenceUtils.saveFollowStatus(this,item.getDb(),"UnFollowed");
+                    followbutton.setText("Follow this user");
                 }
                 break;
         }

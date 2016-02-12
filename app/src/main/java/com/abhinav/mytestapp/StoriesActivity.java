@@ -30,6 +30,7 @@ public class StoriesActivity extends AppCompatActivity implements AdapterView.On
     private String formArray;
     private JsonReponse.List responseList = null;
     private CustomBaseAdapter customBaseAdapter;
+    private JsonReponse.List users = null;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -75,6 +76,7 @@ public class StoriesActivity extends AppCompatActivity implements AdapterView.On
         }
 
         intent.putExtra("item",responseList.get(position));
+        intent.putParcelableArrayListExtra("users",users);
         startActivity(intent);
     }
 }

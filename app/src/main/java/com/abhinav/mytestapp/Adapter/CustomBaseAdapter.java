@@ -82,9 +82,10 @@ public class CustomBaseAdapter extends BaseAdapter {
         else{
             holder.header1.setText(getItem(position).getUsername());
             holder.header2.setText(getItem(position).getHandle());
-            if(getItem(position).isIsFollowing())
-                holder.header3.setText("You Are following this story");
-            else holder.header3.setText("Follow");
+//            if(getItem(position).isIsFollowing())
+//                holder.header3.setText("You Are following this story");
+//            else holder.header3.setText("Follow");
+            holder.header3.setText(getItem(position).getFollowers()+" Followers");
             Picasso.with(mContext).load(getItem(position).getImage()).fit().centerCrop().into(holder.image);
 
         }

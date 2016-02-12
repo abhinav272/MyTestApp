@@ -15,13 +15,13 @@ public class JsonReponse implements Parcelable {
     private String about;
     private String id;
     private String username;
-    private int followers;
-    private int following;
+    private String followers;
+    private String following;
     private String image;
     private String url;
     private String handle;
     private boolean isFollowing;
-    private String createdOn;
+    private long createdOn;
     private String description;
     private String verb;
     private String db;
@@ -95,7 +95,7 @@ public class JsonReponse implements Parcelable {
      * @return
      * The followers
      */
-    public int getFollowers() {
+    public String getFollowers() {
         return followers;
     }
 
@@ -104,7 +104,7 @@ public class JsonReponse implements Parcelable {
      * @param followers
      * The followers
      */
-    public void setFollowers(int followers) {
+    public void setFollowers(String followers) {
         this.followers = followers;
     }
 
@@ -113,7 +113,7 @@ public class JsonReponse implements Parcelable {
      * @return
      * The following
      */
-    public int getFollowing() {
+    public String getFollowing() {
         return following;
     }
 
@@ -122,7 +122,7 @@ public class JsonReponse implements Parcelable {
      * @param following
      * The following
      */
-    public void setFollowing(int following) {
+    public void setFollowing(String following) {
         this.following = following;
     }
 
@@ -203,7 +203,7 @@ public class JsonReponse implements Parcelable {
      * @return
      * The createdOn
      */
-    public String getCreatedOn() {
+    public long getCreatedOn() {
         return createdOn;
     }
 
@@ -212,7 +212,7 @@ public class JsonReponse implements Parcelable {
      * @param createdOn
      * The createdOn
      */
-    public void setCreatedOn(String createdOn) {
+    public void setCreatedOn(long createdOn) {
         this.createdOn = createdOn;
     }
 
@@ -389,13 +389,13 @@ public class JsonReponse implements Parcelable {
         dest.writeString(this.about);
         dest.writeString(this.id);
         dest.writeString(this.username);
-        dest.writeInt(this.followers);
-        dest.writeInt(this.following);
+        dest.writeString(this.followers);
+        dest.writeString(this.following);
         dest.writeString(this.image);
         dest.writeString(this.url);
         dest.writeString(this.handle);
         dest.writeByte(isFollowing ? (byte) 1 : (byte) 0);
-        dest.writeString(this.createdOn);
+        dest.writeLong(this.createdOn);
         dest.writeString(this.description);
         dest.writeString(this.verb);
         dest.writeString(this.db);
@@ -414,13 +414,13 @@ public class JsonReponse implements Parcelable {
         this.about = in.readString();
         this.id = in.readString();
         this.username = in.readString();
-        this.followers = in.readInt();
-        this.following = in.readInt();
+        this.followers = in.readString();
+        this.following = in.readString();
         this.image = in.readString();
         this.url = in.readString();
         this.handle = in.readString();
         this.isFollowing = in.readByte() != 0;
-        this.createdOn = in.readString();
+        this.createdOn = in.readLong();
         this.description = in.readString();
         this.verb = in.readString();
         this.db = in.readString();

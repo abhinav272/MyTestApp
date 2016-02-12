@@ -53,9 +53,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <TextView
+        android:id="@+id/author"
+        android:layout_below="@+id/createdon"
+        android:text="Abhinav Sharma"
+        android:layout_alignParentRight="true"
+        android:textColor="@color/AuthorName"
+        android:textStyle="italic|bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
     <Button
         android:id="@+id/viewstory"
-        android:layout_below="@+id/createdon"
+        android:layout_below="@+id/author"
         android:text="View this Story"
         android:textAllCaps="false"
         android:layout_alignParentRight="true"
@@ -81,5 +91,20 @@
         android:src="@drawable/unlike"
         android:layout_width="60dp"
         android:layout_height="60dp" />
+
+    <Button
+        android:id="@+id/followbutton"
+        android:layout_below="@+id/viewstory"
+        android:text="Follow this user"
+        android:textAllCaps="false"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textColor="@color/White"
+        style="?android:attr/borderlessButtonStyle"
+        android:background="@color/borderlessButtonBackground"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </RelativeLayout>
