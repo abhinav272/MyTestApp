@@ -30,7 +30,7 @@ public class StoriesActivity extends AppCompatActivity implements AdapterView.On
     private String formArray;
     private JsonReponse.List responseList = null;
     private CustomBaseAdapter customBaseAdapter;
-    private JsonReponse.List users = null;
+    private ArrayList<JsonReponse> users = new ArrayList<JsonReponse>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -61,6 +61,12 @@ public class StoriesActivity extends AppCompatActivity implements AdapterView.On
         customBaseAdapter = new CustomBaseAdapter(StoriesActivity.this,responseList);
         storiesListView.setAdapter(customBaseAdapter);
         storiesListView.setOnItemClickListener(this);
+
+        for(JsonReponse obj:responseList){
+            if(obj.getType()==null){
+                users.add(obj);
+            }
+        }
 
 
     }

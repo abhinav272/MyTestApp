@@ -24,8 +24,9 @@ public class StoryDetailActivity extends AppCompatActivity implements View.OnCli
 
     private JsonReponse item = null;
     private ImageView image,like;
-    private TextView storytitle,storydescription,createdon,likescount;
+    private TextView storytitle,storydescription,createdon,likescount,author;
     private Button viewstory,followbutton;
+    private ArrayList<JsonReponse> users = null;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,6 +37,7 @@ public class StoryDetailActivity extends AppCompatActivity implements View.OnCli
 
     private void initialize(){
         item = getIntent().getParcelableExtra("item");
+        users = getIntent().getParcelableArrayListExtra("users");
         image = (ImageView) findViewById(R.id.image);
         like = (ImageView) findViewById(R.id.like);
         storytitle = (TextView) findViewById(R.id.storytitle);
@@ -43,6 +45,7 @@ public class StoryDetailActivity extends AppCompatActivity implements View.OnCli
         createdon = (TextView) findViewById(R.id.createdon);
         likescount = (TextView) findViewById(R.id.likescount);
         viewstory = (Button) findViewById(R.id.viewstory);
+        author = (TextView) findViewById(R.id.author);
         followbutton = (Button) findViewById(R.id.followbutton);
         followbutton.setOnClickListener(this);
         setUpUI(item);
@@ -53,14 +56,17 @@ public class StoryDetailActivity extends AppCompatActivity implements View.OnCli
 
     private void setUpUI(JsonReponse item){
         if(item.getSi()!=null)
-            Picasso.with(this).load(item.getSi()).fit().centerCrop().into(image);
+            Picasso.with(this).load(item.getSi()).fit().centerInside().into(image);
         storytitle.setText(item.getTitle());
         storydescription.setText(item.getDescription());
         createdon.setText(item.getVerb());
         likescount.setText(item.getLikesCount()+" Likes");
         if(PreferenceUtils.getFollowStatus(this,item.getDb()).equalsIgnoreCase("Followed"))
             followbutton.setText("Unfollow the User");
-
+        for(JsonReponse obj:users){
+            if(item.getDb().equals(obj.getId()))
+                author.setText("Story written by "+obj.getUsername());
+        }
 
 
     }

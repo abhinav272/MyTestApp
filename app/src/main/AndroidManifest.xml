@@ -3,21 +3,32 @@
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
-    <application android:allowBackup="true"
+    <application
+        android:allowBackup="true"
         android:label="@string/app_name"
         android:icon="@mipmap/ic_launcher"
         android:supportsRtl="true"
-        android:theme="@style/BaseTheme">
+        android:theme="@style/AppTheme">
 
-        <activity android:name=".SplashScreen">
+        <activity
+            android:name=".SplashScreen"
+            android:screenOrientation="portrait"
+            android:theme="@style/BaseTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"></action>
                 <category android:name="android.intent.category.LAUNCHER"></category>
             </intent-filter>
         </activity>
-        <activity android:name=".StoriesActivity"></activity>
-        <activity android:name=".StoryDetailActivity"></activity>
-        <activity android:name=".UserDetailActivity"></activity>
+        <activity
+            android:name=".StoriesActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".StoryDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/BaseTheme"></activity>
+        <activity
+            android:name=".UserDetailActivity"
+            android:screenOrientation="portrait"></activity>
 
     </application>
 
