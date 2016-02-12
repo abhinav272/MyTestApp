@@ -73,11 +73,11 @@ public class CustomBaseAdapter extends BaseAdapter {
             holder = (ViewHolder) view.getTag();
         }
 
-        if(getItem(position).getUsername().isEmpty()){
+        if(getItem(position).getUsername()==null){
             holder.header1.setText(getItem(position).getTitle());
             holder.header2.setText(getItem(position).getDescription());
             holder.header3.setText(getItem(position).getVerb());
-            Picasso.with(mContext).load(getItem(position).getImage()).fit().centerCrop().into(holder.image);
+            Picasso.with(mContext).load(getItem(position).getSi()).fit().centerCrop().into(holder.image);
         }
         else{
             holder.header1.setText(getItem(position).getUsername());

@@ -55,6 +55,7 @@ public class StoriesActivity extends AppCompatActivity {
         Gson gson = new Gson();
         responseList = gson.fromJson(formArray,JsonReponse.List.class);
         customBaseAdapter = new CustomBaseAdapter(StoriesActivity.this,responseList);
+        storiesListView.setAdapter(customBaseAdapter);
 
 
     }
