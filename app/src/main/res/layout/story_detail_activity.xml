@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:background="@color/White"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="180dp" />
+
+    <ScrollView
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/image">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/storytitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/colorAccent"
+                android:textSize="25sp"
+                android:textStyle="bold|italic" />
+
+            <TextView
+                android:id="@+id/storydescription"
+                android:layout_below="@+id/storytitle"
+                android:layout_marginTop="5dp"
+                android:textSize="18sp"
+                android:textStyle="italic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+        </RelativeLayout>
+
+
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/createdon"
+        android:layout_below="@id/content"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/viewstory"
+        android:layout_below="@+id/createdon"
+        android:text="View this Story"
+        android:textAllCaps="false"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textColor="@color/White"
+        style="?android:attr/borderlessButtonStyle"
+        android:background="@color/borderlessButtonBackground"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/likescount"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/createdon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/like"
+        android:layout_below="@+id/likescount"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/unlike"
+        android:layout_width="60dp"
+        android:layout_height="60dp" />
+
+</RelativeLayout>

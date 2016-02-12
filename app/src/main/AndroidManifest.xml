@@ -16,6 +16,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".StoriesActivity"></activity>
+        <activity android:name=".StoryDetailActivity"></activity>
+        <activity android:name=".UserDetailActivity"></activity>
 
     </application>
 

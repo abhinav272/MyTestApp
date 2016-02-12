@@ -3,6 +3,8 @@ package com.abhinav.mytestapp.Model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 
 /**
@@ -27,7 +29,9 @@ public class JsonReponse implements Parcelable {
     private String type;
     private String title;
     private boolean likeFlag;
+    @SerializedName("likes_count")
     private int likesCount;
+    @SerializedName("comment_count")
     private int commentCount;
 
     public static class List extends ArrayList<JsonReponse>{}

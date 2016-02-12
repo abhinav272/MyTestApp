@@ -1,12 +1,15 @@
 package com.abhinav.mytestapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.abhinav.mytestapp.Adapter.CustomBaseAdapter;
@@ -20,7 +23,7 @@ import java.util.ArrayList;
 /**
  * Created by abhinavsharma on 11-02-2016.
  */
-public class StoriesActivity extends AppCompatActivity {
+public class StoriesActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     private CardView mCardView;
     private ListView storiesListView;
@@ -56,7 +59,22 @@ public class StoriesActivity extends AppCompatActivity {
         responseList = gson.fromJson(formArray,JsonReponse.List.class);
         customBaseAdapter = new CustomBaseAdapter(StoriesActivity.this,responseList);
         storiesListView.setAdapter(customBaseAdapter);
+        storiesListView.setOnItemClickListener(this);
 
 
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent intent = null;
+        if(responseList.get(position).getUsername()==null){
+            intent = new Intent(StoriesActivity.this,StoryDetailActivity.class);
+        }
+        else{
+            intent = new Intent(StoriesActivity.this,UserDetailActivity.class);
+        }
+
+        intent.putExtra("item",responseList.get(position));
+        startActivity(intent);
     }
 }
