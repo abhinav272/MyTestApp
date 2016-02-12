@@ -1,5 +1,6 @@
 package com.abhinav.mytestapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -18,7 +19,7 @@ public class SplashScreen extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-
+                startActivity(new Intent(SplashScreen.this,StoriesActivity.class));
             }
         },2000);
     }
