@@ -77,13 +77,13 @@ public class UserDetailActivity extends AppCompatActivity implements View.OnClic
     public void onClick(View v) {
         if(v.getTag().equals("Follow")){
             Snackbar.make(v,"You are now following "+item.getUsername(),Snackbar.LENGTH_SHORT).show();
-            PreferenceUtils.saveFollowStatus(this,item.getId(),"Followed");
+            PreferenceUtils.saveFollowStatus(this,item.getId(),PreferenceUtils.FOLLOWED);
             follow.setTag("Unfollow");
             follow.setText("Unfollow");
         }
         else {
             Snackbar.make(v,"You just Unfollowed "+item.getUsername(),Snackbar.LENGTH_SHORT).show();
-            PreferenceUtils.saveFollowStatus(this,item.getId(),"UnFollowed");
+            PreferenceUtils.saveFollowStatus(this,item.getId(),PreferenceUtils.UNFOLLOWED);
             follow.setTag("Follow");
             follow.setText("Follow");
         }
