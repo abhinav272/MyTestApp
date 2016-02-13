@@ -91,5 +91,9 @@ public class StoriesActivity extends AppCompatActivity implements AdapterView.On
         startActivity(intent);
     }
 
-
+    @Override
+    protected void onPostResume() {
+        customBaseAdapter.notifyDataSetChanged();
+        super.onPostResume();
+    }
 }

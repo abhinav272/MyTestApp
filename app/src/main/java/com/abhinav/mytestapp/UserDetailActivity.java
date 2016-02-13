@@ -66,8 +66,11 @@ public class UserDetailActivity extends AppCompatActivity implements View.OnClic
         handle.setText(item.getHandle());
         about.setText(item.getAbout());
         createdon.setText("Created On: "+createdDate);
-        if(PreferenceUtils.getFollowStatus(this,item.getId()).equalsIgnoreCase("Followed"))
+        if(PreferenceUtils.getFollowStatus(this,item.getId()).equalsIgnoreCase("Followed")){
             follow.setText("Unfollow");
+            follow.setTag("Unfollow");
+        }
+
     }
 
     @Override
