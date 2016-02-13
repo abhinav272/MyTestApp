@@ -10,6 +10,7 @@ import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.abhinav.mytestapp.Adapter.CustomBaseAdapter;
@@ -43,6 +44,8 @@ public class StoriesActivity extends AppCompatActivity implements AdapterView.On
         }
     }
 
+
+
     public static String AssetJSONFile (String filename, Context context) throws IOException {
         AssetManager manager = context.getAssets();
         InputStream file = manager.open(filename);
@@ -69,6 +72,8 @@ public class StoriesActivity extends AppCompatActivity implements AdapterView.On
         }
 
 
+
+
     }
 
     @Override
@@ -85,4 +90,6 @@ public class StoriesActivity extends AppCompatActivity implements AdapterView.On
         intent.putParcelableArrayListExtra("users",users);
         startActivity(intent);
     }
+
+
 }

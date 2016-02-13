@@ -88,11 +88,11 @@ public class StoryDetailActivity extends AppCompatActivity implements View.OnCli
             case R.id.followbutton:
                 if(PreferenceUtils.getFollowStatus(this,item.getDb()).equalsIgnoreCase("UnFollowed")||PreferenceUtils.getFollowStatus(this,item.getDb()).equalsIgnoreCase("NoStatus")){
                     Log.d("status","followed");
-                    PreferenceUtils.saveFollowStatus(this,item.getDb(),"Followed");
+                    PreferenceUtils.saveFollowStatus(this,item.getDb(),PreferenceUtils.FOLLOWED);
                     followbutton.setText("Unfollow this user");
                 }else {
                     Log.d("status","unfollowed");
-                    PreferenceUtils.saveFollowStatus(this,item.getDb(),"UnFollowed");
+                    PreferenceUtils.saveFollowStatus(this,item.getDb(),PreferenceUtils.UNFOLLOWED);
                     followbutton.setText("Follow this user");
                 }
                 break;

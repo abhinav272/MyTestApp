@@ -10,6 +10,8 @@ import android.content.SharedPreferences;
 public class PreferenceUtils {
 
     private static final String AGENT_APP_PREFERENCE = "RoposoDeveloperExam";
+    public static final String FOLLOWED = "Followed";
+    public static final String UNFOLLOWED = "UnFollowed";
 
     private static SharedPreferences appPreference;
     private static SharedPreferences getAppPreference(Context context){
